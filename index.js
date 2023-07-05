@@ -1,5 +1,5 @@
 const express = require('express');
-morgan = require('morgan');
+const morgan = require('morgan');
     fs = require('fs');
     path = require('path');
 
