@@ -11,7 +11,28 @@ const accessLogStream = fs.createWriteStream(path.join(__dirname, 'log.txt'), {f
 // setup the logger
 app.use(morgan('combined', {stream: accessLogStream}));
 
-let topMovies = [
+let users = [
+    {
+        Username: "Katelyn",
+        Password: "moviesRule2",
+        Email: "katelyn2@gmail.com",
+        Birthday: "08/22/1999",
+    },
+    {
+        Username: "Dominic",
+        Password: "drDom123",
+        Email: "dominic123@gmail.com",
+        Birthday: "03/05/2002", 
+    },
+    {
+        Username: "Alex",
+        Password: "!2345",
+        Email: "alex5@gmail.com",
+        Birthday: "12/02/2001", 
+    },
+];
+
+let movies = [
     {
         Title: 'The Fast and the Furious',
         Genre: 'Action/Thriller',
@@ -72,7 +93,7 @@ let topMovies = [
 
 // GET route at endpoint "/movies" returning JSON object with data about movies
 app.get('/movies', (req, res) => {
-    res.json(topMovies);
+    res.json(movies);
 });
 
 // create GET route at endpoint "/" that returns default text
