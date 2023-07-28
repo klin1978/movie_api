@@ -1,9 +1,15 @@
 const express = require('express');
-const morgan = require('morgan');
+    morgan = require('morgan');
     fs = require('fs');
     path = require('path');
 
 const app = express();
+
+const bodyParser = require('body-parser');
+const uuid = require('uuid');
+const { title } = require('process');
+
+app.use(bodyParser.json());
 
 //create write stream
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'log.txt'), {flags: 'a'});
@@ -13,87 +19,246 @@ app.use(morgan('combined', {stream: accessLogStream}));
 
 let users = [
     {
-        Username: "Katelyn",
-        Password: "moviesRule2",
-        Email: "katelyn2@gmail.com",
-        Birthday: "08/22/1999",
+        id: 1,
+        Username: 'Katelyn',
+        favoriteMovies: []
     },
     {
-        Username: "Dominic",
-        Password: "drDom123",
-        Email: "dominic123@gmail.com",
-        Birthday: "03/05/2002", 
+        id: 2,
+        Username: 'Dominic',
+        favoriteMovies: ['Top Gun']
     },
     {
-        Username: "Alex",
-        Password: "!2345",
-        Email: "alex5@gmail.com",
-        Birthday: "12/02/2001", 
+        id: 3,
+        Username: 'Alex',
+        favoriteMovies: ['Pitch Perfect']
     },
 ];
 
 let movies = [
     {
         Title: 'The Fast and the Furious',
-        Genre: 'Action/Thriller',
+        Genre: {
+            Name: 'Action',
+            Description: ''
+        },
         Description: 'Los Angeles police officer Brian O\'Connor is sent undercover to a take down a whole other world of illegal street racing but finds himself questioning where his loyalties lie.',
         Cast: 'Vin Diesel, Paul Walker, Michelle Rodriguez, Jordana Brewster, etc.',
-        Director: 'Rob Cohen',
+        Director: {
+            Name: 'Rob Cohen',
+            Born: '',
+            Biography: '',
+        }
     },
     {
         Title: 'The Italian Job',
-        Genre: 'Action/Thriller',
+        Genre: {
+            Name: 'Action',
+            Description: ''
+        },
         Description: '',
         Cast: 'Donald Sutherland, Mark Wahlberg, Edward Norton, Charlize Theron, Jason Statham, Seth Green, Yasiin Bey',
-        Director: 'F. Gary Gray',
+        Director: {
+            Name: 'F. Gary Gray',
+            Born: '',
+            Biography: '',
+        }
     },
     {
         Title: 'Ocean\'s Eleven',
-        Genre: 'Crime/Thriller',
+        Genre: {
+            Name: 'Crime',
+            Description: ''
+        },
         Description: '',
         Cast: 'George Clooney, Brad Pitt, Julia Roberts, Matt Damon, Cecelia Ann Birt, Bernie Mac',
-        Director: 'Steven Soderbergh',
+        Director: {
+            Name: 'Steven Soderbergh',
+            Born: '',
+            Biography: '',
+        }
     },
     {
        Title: 'The Heat',
-       Genre: 'Comedy/Action',
+       Genre: {
+            Name: 'Comedy',
+            Description: ''
+       },
        Description: '',
        Cast: 'Melissa McCarthy, Sandra Bullock, Marlon Wayans, Thomas F. WIlson, Ben Falcone',
-       Director: 'Paul Feig', 
+       Director: {
+            Name: 'Paul Feig',
+            Born: '',
+            Biography: '',
+        }
     },
     {
         Title: 'Pitch Perfect',
-        Genre: 'Comedy/Music',
+        Genre: {
+            Name: 'Comedy',
+            Description: ''
+        },
         Description: '',
         Cast: 'Anna Kendrick, Brittany Snow, Rebel Wilson, Anna Camp, Skylar Astin, Ben Platt',
-        Director: 'Jason Moore',
+        Director: {
+            Name: 'Jason Moore',
+            Born: '',
+            Biography: '',
+        }
     },
     {
         Title: 'The Avengers',
-        Genre: 'Sci-Fi/Action',
+        Genre: {
+            Name: 'Action',
+            Description: ''
+        },
         Description: '',
         Cast: 'Robert Downey Jr., Chris Evans, Scarlett Johansson, Jeremy Renner, Mark Ruffalo, Chris Hemsworth',
-        Director: 'Joss Whedon',
+        Director: {
+            Name: 'Joss Whedon',
+            Born: '',
+            Biography: '',
+        }
     },
     {
         Title: 'Top Gun',
-        Genre: 'Action/Drama',
+        Genre: {
+            Name: 'Action',
+            Description: ''
+        },
         Description: '',
         Cast: 'Tom Cruise, Tim Robbins, Kelly McGillis, Val Kilmer, Anthony Edwards, Tom Skerrit, Michael Ironside',
-        Director: 'Tony Scott',
+        Director: {
+            Name: 'Tony Scott',
+            Born: '',
+            Biography: '',
+        }
     },
     {
         Title: '2 Guns',
-        Genre: 'Action/Thriller',
+        Genre: {
+            Name: 'Action',
+            Description: ''
+        },
         Description: '',
         Cast: 'Denzel Washington, Mark Wahlberg, Paula Patton, Bill Paxton, Edward James Olmos, Robert John Burke',
-        Director: 'Baltasar Kormakur',
+        Director: {
+            Name: 'Baltasar Kormakur',
+            Born: '',
+            Biography: '',
+        }
     },
 ];
 
-// GET route at endpoint "/movies" returning JSON object with data about movies
+// CREATE (POST) new user
+app.post('/users', (req, res) => {
+    const newUser = req.body;
+
+    if (newUser.username) {
+        newUser.id = uuid.v4();
+        users.push(newUser);
+        res.status(201).json(newUser)
+    } else {
+        res.status(400).send('users need names')
+    }
+});
+
+// UPDATE (PUT) username
+app.put('/users/:id', (req, res) => {
+    const { id } = req.params;
+    const updatedUser = req.body;
+
+    let user = users.find( user => user.id == id );
+
+    if (user) {
+        user.name = updatedUser.username;
+        res.status(200).json(user);
+    } else {
+        res.status(400).send('no user found')
+    }
+});
+
+// CREATE (POST) favoriteMovie
+app.post('/users/:id/:movieTitle', (req, res) => {
+    const { id, movieTitle } = req.params;
+
+    let user = users.find( user => user.id == id );
+
+    if (user) {
+        user.favoriteMovies.push(movieTitle);
+        res.status(200).send(`${movieTitle} has been added to user ${id}'s array`);
+    } else {
+        res.status(400).send('no user found')
+    }
+});
+
+// DELETE favoriteMovie
+app.delete('/users/:id/:movieTitle', (req, res) => {
+    const { id, movieTitle } = req.params;
+
+    let user = users.find( user => user.id == id );
+
+    if (user) {
+        user.favoriteMovies = user.favoriteMovies.filter( title => title !== movieTitle);
+        res.status(200).send(`${movieTitle} has been removed from user ${id}'s array`);
+    } else {
+        res.status(400).send('no user found')
+    }
+});
+
+// DELETE user
+app.delete('/users/:id', (req, res) => {
+    const { id } = req.params;
+
+    let user = users.find( user => user.id == id );
+
+    if (user) {
+        users = users.filter( user => user.id != id);
+        res.status(200).send(`user ${id} has been deleted`);
+    } else {
+        res.status(400).send('no user found')
+    }
+});
+
+// READ (GET) all movies
 app.get('/movies', (req, res) => {
-    res.json(movies);
+    res.status(200).json(movies);
+});
+
+// READ (GET) one movie
+app.get('/movies/:title', (req, res) => {
+    const { title } = req.params;
+    const movie = movies.find( movie => movie.Title === title );
+
+    if (movie) {
+        res.status(200).json(movie);
+    } else {
+        res.status(400).send('no such movie found')
+    }
+});
+
+// READ (GET) genre
+app.get('/movies/genre/:genreName', (req, res) => {
+    const { genreName } = req.params;
+    const genre = movies.find( movie => movie.Genre.Name === genreName ).Genre;
+
+    if (genre) {
+        res.status(200).json(genre);
+    } else {
+        res.status(400).send('no such genre found')
+    }
+});
+
+// READ (GET) director
+app.get('/movies/director/:directorName', (req, res) => {
+    const { directorName } = req.params;
+    const director = movies.find( movie => movie.Director.Name === directorName ).Director;
+
+    if (director) {
+        res.status(200).json(director);
+    } else {
+        res.status(400).send('no such director found')
+    }
 });
 
 // create GET route at endpoint "/" that returns default text
