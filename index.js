@@ -171,7 +171,7 @@ app.put('/users/:id', (req, res) => {
     let user = users.find( user => user.id == id );
 
     if (user) {
-        user.name = updatedUser.username;
+        user.username = updatedUser.username;
         res.status(200).json(user);
     } else {
         res.status(400).send('no user found')

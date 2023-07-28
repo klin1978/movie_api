@@ -10,5 +10,128 @@
         <p>myFlix is a web application that will provide users with information about the movies, actors, directors, and genres they are interested in.
             Users will be able to sign up, update their personal information, and create a list of their favorite movies.
         </p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Business Logic</th>
+                    <th>URL</th>
+                    <th>HTTP Method</th>
+                    <th>Query Parameters</th>
+                    <th>Request Body Data Format</th>
+                    <th>Response Body Data Format</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Adds a new user</td>
+                    <td>/users</td>
+                    <td>POST</td>
+                    <td>none</td>
+                    <td>A JSON object holding data about a new user: {"Username":"", "favoriteMovies": []}</td>
+                    <td>A JSON object holding data about the student that was added, including ID: {"Username":"", "favoriteMovies": [], "id":""}</td>
+                </tr>
+
+                <tr>
+                    <td>Update a users username</td>
+                    <td>/users/:id</td>
+                    <td>PUT</td>
+                    <td>id</td>
+                    <td>A JSON object of the new username: <br> {"Username":"", "favoriteMovies": []}</td>
+                    <td>A JSON object of the new username: <br> {"id:"", "Username":"", "favoriteMovies": []}</td>
+                </tr>
+
+                <tr>
+                    <td>Adds a new movie to the users favorites</td>
+                    <td>/users/:id/:movieTitle</td>
+                    <td>POST</td>
+                    <td>id, movieTitle</td>
+                    <td>none</td>
+                    <td>A JSON object indicating movieTitle was added to users favoriteMovies</td>
+                </tr>
+
+                <tr>
+                    <td>Delete a movie from the users favorites</td>
+                    <td>/users/:id/:movieTitle</td>
+                    <td>DELETE</td>
+                    <td>id, movieTitle</td>
+                    <td>none</td>
+                    <td>A JSON object indicating movieTitle was removed from users favoriteMovies</td>
+                </tr>
+
+                <tr>
+                    <td>Deletes a user</td>
+                    <td>/users/:id</td>
+                    <td>DELETE</td>
+                    <td>none</td>
+                    <td>id</td>
+                    <td>A JSON object indicating a user was removed</td>
+                </tr>
+
+                <tr>
+                    <td>Return a list of all movies</td>
+                    <td>/movies</td>
+                    <td>GET</td>
+                    <td>none</td>
+                    <td>none</td>
+                    <td>A JSON object holding data about all movies</td>
+                </tr>
+
+                <tr>
+                    <td>Return data about a single movie</td>
+                    <td>/movies/:title</td>
+                    <td>GET</td>
+                    <td>none</td>
+                    <td>movieTitle</td>
+                    <td>A JSON object holding data about a single movie: <br>
+                        {
+                            "Title": "The Avengers",
+                            "Genre": {
+                                "Name": "Action",
+                                "Description": ""
+                                },
+                            "Description": "",
+                            "Cast": "Robert Downey Jr., Chris Evans, Scarlett Johansson, Jeremy Renner, Mark Ruffalo, Chris Hemsworth",
+                            "Director": {
+                                "Name": "Joss Whedon",
+                                "Born": "",
+                                "Biography": ""
+                                }
+                        }
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Return data about a single genre</td>
+                    <td>/movies/genre/:genreName</td>
+                    <td>GET</td>
+                    <td>none</td>
+                    <td>genreName</td>
+                    <td>A JSON object holding data about a single genre: <br>
+                        {
+                            "Name": "Crime",
+                            "Description": ""
+                        }
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Return data about a single director</td>
+                    <td>/movies/director/:directorName</td>
+                    <td>GET</td>
+                    <td>none</td>
+                    <td>directorName</td>
+                    <td>A JSON object holding data about a single director: <br>
+                        {
+                            "Name": "Tony Scott",
+                            "Born": "",
+                            "Biography": ""
+                        }
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
     </body>
 </html>

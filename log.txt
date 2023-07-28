@@ -61,3 +61,8 @@ Timestamp: Sat Jun 10 2023 11:00:17 GMT-0500 (Central Daylight Time)
 ::1 - - [28/Jul/2023:15:02:46 +0000] "DELETE /users/2 HTTP/1.1" 404 149 "-" "PostmanRuntime/7.32.3"
 ::1 - - [28/Jul/2023:15:04:29 +0000] "DELETE /users/2 HTTP/1.1" 404 149 "-" "PostmanRuntime/7.32.3"
 ::1 - - [28/Jul/2023:15:11:53 +0000] "DELETE /users/2 HTTP/1.1" 200 23 "-" "PostmanRuntime/7.32.3"
+::1 - - [28/Jul/2023:15:59:22 +0000] "PUT /users/1 HTTP/1.1" 200 49 "-" "PostmanRuntime/7.32.3"
+::1 - - [28/Jul/2023:15:59:32 +0000] "PUT /users/1 HTTP/1.1" 200 49 "-" "PostmanRuntime/7.32.3"
+::1 - - [28/Jul/2023:16:02:42 +0000] "PUT /users/1 HTTP/1.1" 200 49 "-" "PostmanRuntime/7.32.3"
+::1 - - [28/Jul/2023:16:03:25 +0000] "PUT /users/1 HTTP/1.1" 200 49 "-" "PostmanRuntime/7.32.3"
+::1 - - [28/Jul/2023:16:28:26 +0000] "GET /movies/The%20Avengers HTTP/1.1" 200 249 "-" "PostmanRuntime/7.32.3"
