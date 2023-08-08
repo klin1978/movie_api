@@ -40,7 +40,7 @@ let movies = [
         Title: 'The Fast and the Furious',
         Genre: {
             Name: 'Action',
-            Description: ''
+            Description: 'High-octance films that can include violent fight-scenes, suspenseful chases, and special effects.'
         },
         Description: 'Los Angeles police officer Brian O\'Connor is sent undercover to a take down a whole other world of illegal street racing but finds himself questioning where his loyalties lie.',
         Cast: 'Vin Diesel, Paul Walker, Michelle Rodriguez, Jordana Brewster, etc.',
@@ -54,7 +54,7 @@ let movies = [
         Title: 'The Italian Job',
         Genre: {
             Name: 'Action',
-            Description: ''
+            Description: 'High-octance films that can include violent fight-scenes, suspenseful chases, and special effects.'
         },
         Description: '',
         Cast: 'Donald Sutherland, Mark Wahlberg, Edward Norton, Charlize Theron, Jason Statham, Seth Green, Yasiin Bey',
@@ -68,7 +68,7 @@ let movies = [
         Title: 'Ocean\'s Eleven',
         Genre: {
             Name: 'Crime',
-            Description: ''
+            Description: 'Films that are largely centered around the execution and/or the solving of a crime.'
         },
         Description: '',
         Cast: 'George Clooney, Brad Pitt, Julia Roberts, Matt Damon, Cecelia Ann Birt, Bernie Mac',
@@ -82,7 +82,7 @@ let movies = [
        Title: 'The Heat',
        Genre: {
             Name: 'Comedy',
-            Description: ''
+            Description: 'Films that are centered around a comedic premise and are meant to be light, humurous, and entertaining.'
        },
        Description: '',
        Cast: 'Melissa McCarthy, Sandra Bullock, Marlon Wayans, Thomas F. WIlson, Ben Falcone',
@@ -96,7 +96,7 @@ let movies = [
         Title: 'Pitch Perfect',
         Genre: {
             Name: 'Comedy',
-            Description: ''
+            Description: 'Films that are centered around a comedic premise and are meant to be light, humurous, and entertaining.'
         },
         Description: '',
         Cast: 'Anna Kendrick, Brittany Snow, Rebel Wilson, Anna Camp, Skylar Astin, Ben Platt',
@@ -110,7 +110,7 @@ let movies = [
         Title: 'The Avengers',
         Genre: {
             Name: 'Action',
-            Description: ''
+            Description: 'High-octance films that can include violent fight-scenes, suspenseful chases, and special effects.'
         },
         Description: '',
         Cast: 'Robert Downey Jr., Chris Evans, Scarlett Johansson, Jeremy Renner, Mark Ruffalo, Chris Hemsworth',
@@ -124,7 +124,7 @@ let movies = [
         Title: 'Top Gun',
         Genre: {
             Name: 'Action',
-            Description: ''
+            Description: 'High-octance films that can include violent fight-scenes, suspenseful chases, and special effects.'
         },
         Description: '',
         Cast: 'Tom Cruise, Tim Robbins, Kelly McGillis, Val Kilmer, Anthony Edwards, Tom Skerrit, Michael Ironside',
@@ -138,7 +138,7 @@ let movies = [
         Title: '2 Guns',
         Genre: {
             Name: 'Action',
-            Description: ''
+            Description: 'High-octance films that can include violent fight-scenes, suspenseful chases, and special effects.'
         },
         Description: '',
         Cast: 'Denzel Washington, Mark Wahlberg, Paula Patton, Bill Paxton, Edward James Olmos, Robert John Burke',
