@@ -34,37 +34,37 @@
 
                 <tr>
                     <td>Update a users username</td>
-                    <td>/users/:id</td>
+                    <td>/users/:userName</td>
                     <td>PUT</td>
-                    <td>id</td>
+                    <td>:userName</td>
                     <td>A JSON object of the new username: <br> {"Username":"", "favoriteMovies": []}</td>
                     <td>A JSON object of the new username: <br> {"id:"", "Username":"", "favoriteMovies": []}</td>
                 </tr>
 
                 <tr>
                     <td>Adds a new movie to the users favorites</td>
-                    <td>/users/:id/:movieTitle</td>
+                    <td>/users/:userName/:movieTitle</td>
                     <td>POST</td>
-                    <td>id, movieTitle</td>
+                    <td>:userName/:movieTitle</td>
                     <td>none</td>
                     <td>A JSON object indicating movieTitle was added to users favoriteMovies</td>
                 </tr>
 
                 <tr>
                     <td>Delete a movie from the users favorites</td>
-                    <td>/users/:id/:movieTitle</td>
+                    <td>/users/:userName/:movieTitle</td>
                     <td>DELETE</td>
-                    <td>id, movieTitle</td>
+                    <td>:userName/movieTitle</td>
                     <td>none</td>
                     <td>A JSON object indicating movieTitle was removed from users favoriteMovies</td>
                 </tr>
 
                 <tr>
                     <td>Deletes a user</td>
-                    <td>/users/:id</td>
+                    <td>/users/:userName</td>
                     <td>DELETE</td>
+                    <td>:userName</td>
                     <td>none</td>
-                    <td>id</td>
                     <td>A JSON object indicating a user was removed</td>
                 </tr>
 
@@ -82,7 +82,7 @@
                     <td>/movies/:title</td>
                     <td>GET</td>
                     <td>none</td>
-                    <td>movieTitle</td>
+                    <td>:title</td>
                     <td>A JSON object holding data about a single movie: <br>
                         {
                             "Title": "The Avengers",
@@ -106,7 +106,7 @@
                     <td>/movies/genre/:genreName</td>
                     <td>GET</td>
                     <td>none</td>
-                    <td>genreName</td>
+                    <td>:genreName</td>
                     <td>A JSON object holding data about a single genre: <br>
                         {
                             "Name": "Crime",
@@ -120,7 +120,7 @@
                     <td>/movies/director/:directorName</td>
                     <td>GET</td>
                     <td>none</td>
-                    <td>directorName</td>
+                    <td>:directorName</td>
                     <td>A JSON object holding data about a single director: <br>
                         {
                             "Name": "Tony Scott",
