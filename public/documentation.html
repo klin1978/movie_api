@@ -34,27 +34,27 @@
 
                 <tr>
                     <td>Update a users username</td>
-                    <td>/users/:userName</td>
+                    <td>/users/:UserName</td>
                     <td>PUT</td>
-                    <td>:userName</td>
+                    <td>:UserName</td>
                     <td>A JSON object of the new username: <br> {"Username":"", "favoriteMovies": []}</td>
                     <td>A JSON object of the new username: <br> {"id:"", "Username":"", "favoriteMovies": []}</td>
                 </tr>
 
                 <tr>
                     <td>Adds a new movie to the users favorites</td>
-                    <td>/users/:userName/:movieTitle</td>
+                    <td>/users/:UserName/Movies/:MovieID</td>
                     <td>POST</td>
-                    <td>:userName/:movieTitle</td>
+                    <td>:UserName/Movies/:MovieID</td>
                     <td>none</td>
                     <td>A JSON object indicating movieTitle was added to users favoriteMovies</td>
                 </tr>
 
                 <tr>
                     <td>Delete a movie from the users favorites</td>
-                    <td>/users/:userName/:movieTitle</td>
+                    <td>/users/:UserName/movies/:MovieID</td>
                     <td>DELETE</td>
-                    <td>:userName/movieTitle</td>
+                    <td>:UserName/movies/:MovieID</td>
                     <td>none</td>
                     <td>A JSON object indicating movieTitle was removed from users favoriteMovies</td>
                 </tr>
@@ -79,10 +79,10 @@
 
                 <tr>
                     <td>Return data about a single movie</td>
-                    <td>/movies/:title</td>
+                    <td>/movies/:Title</td>
                     <td>GET</td>
                     <td>none</td>
-                    <td>:title</td>
+                    <td>:Title</td>
                     <td>A JSON object holding data about a single movie: <br>
                         {
                             "Title": "The Avengers",
