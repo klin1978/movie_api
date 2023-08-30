@@ -282,7 +282,8 @@ app.put('/users/:Username', passport.authenticate('jwt', { session: false}), asy
                 Birthday: req.body.Birthday,
             },
         },
-            {new: true})
+            {new: true},
+    )
             .then((updatedUser) => {
                 res.json(updatedUser);
             })
@@ -293,19 +294,19 @@ app.put('/users/:Username', passport.authenticate('jwt', { session: false}), asy
 });
 
 // CREATE (POST) favoriteMovie
-app.post('/users/:Username/Movies/:MovieID', passport.authenticate('jwt', { session: false}), async (req, res) => {
+app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { session: false}), async (req, res) => {
     await Users.findOneAndUpdate({Username: req.params.Username},
         {
             $push: { FavoriteMovies: req.params.MovieID}
         },
-        {new: true},
-        (err, updatedUser) => {
-            if (err) {
-                console.error(err);
-                res.status(500).send('Error: ' + err);
-            } else {
-                res.json(updatedUser);
-            }
+        {new: true}
+    )
+    .then((updatedUser) => {
+        res.status(200).json(updatedUser);
+    })
+    .catch((err) => {
+        console.error(err);
+        res.status(500).send('Error: ' + err);
     });
 });
 
@@ -383,8 +384,9 @@ app.get('/users', passport.authenticate('jwt', { session: false}), async (req, r
 // READ (GET) movie by genre
 app.get('/movies/genre/:genreName', passport.authenticate('jwt', { session: false}), async (req, res) => {
     await Movies.find({ 'Genre.Name': req.params.genreName })
-        .then((movie) => {
-            res.json(movie.Genre);
+        .then((movies) => {
+            const genres = movies.map(movie => movie.Genre);
+            res.json(genres);
         })
         .catch((err) => {
             console.error(err);
@@ -395,8 +397,9 @@ app.get('/movies/genre/:genreName', passport.authenticate('jwt', { session: fals
 // READ (GET) director
 app.get('/movies/director/:directorName', passport.authenticate('jwt', { session: false}), async (req, res) => {
     await Movies.find({ 'Director.Name': req.params.directorName })
-        .then((movie) => {
-            res.json(movie.Director);
+        .then((movies) => {
+            const directors = movies.map(movie => movie.Director);
+            res.json(directors);
         })
         .catch((err) => {
             console.error(err);
