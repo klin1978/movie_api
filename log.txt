@@ -224,3 +224,4 @@ Timestamp: Sat Jun 10 2023 11:00:17 GMT-0500 (Central Daylight Time)
 ::1 - - [30/Aug/2023:13:11:10 +0000] "GET /users HTTP/1.1" 401 - "-" "PostmanRuntime/7.32.3"
 ::1 - - [30/Aug/2023:13:11:15 +0000] "GET /users/ HTTP/1.1" 401 - "-" "PostmanRuntime/7.32.3"
 ::1 - - [30/Aug/2023:13:11:32 +0000] "GET /users/ HTTP/1.1" 401 - "-" "PostmanRuntime/7.32.3"
+::1 - - [12/Sep/2023:13:54:04 +0000] "POST /users HTTP/1.1" 201 241 "-" "PostmanRuntime/7.32.3"
