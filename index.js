@@ -11,6 +11,9 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+const cors = require('cors');
+app.use(cors());
+
 let auth = require('./auth')(app);
 
 const passport = require('passport');
@@ -241,32 +244,32 @@ let movies = [
 ];
 
 // CREATE (POST) new user
-app.post('/users', (req, res) => {
-    Users.findOne({Username: req.body.Username})
-        .then((user) => {
-            if (user) {
-                return res.status(400).send(req.body.Username + 'already exists');
-            } else {
-                Users.create({
-                    Username: req.body.Username,
-                    Email: req.body.Email,
-                    Password: req.body.Password,
-                    Birthday: req.body.Birthday,
-                })
-                    .then((user) => {
-                        res.status(201).json(user);
-                    })
-                    .catch((error) => {
-                        console.error(error);
-                        res.status(500).send('Error: ' + error);
-                    })
-            }
-        })
-        .catch((error) => {
-            console.error(error);
-            res.status(500).send('Error: ' + error);
-        });
-});
+app.post('/users', async (req, res) => {
+    let hashedPassword = Users.hashPassword(req.body.Password);
+    await Users.findOne({ Username: req.body.Username })
+      .then((user) => {
+        if (user) {
+          return res.status(400).send(req.body.Username + ' already exists');
+        } else {
+          Users
+            .create({
+              Username: req.body.Username,
+              Password: hashedPassword,
+              Email: req.body.Email,
+              Birthday: req.body.Birthday
+            })
+            .then((user) => { res.status(201).json(user) })
+            .catch((error) => {
+              console.error(error);
+              res.status(500).send('Error: ' + error);
+            });
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        res.status(500).send('Error: ' + error);
+      });
+  });
 
 // UPDATE (PUT) username
 app.put('/users/:Username', passport.authenticate('jwt', { session: false}), async (req, res) => {
