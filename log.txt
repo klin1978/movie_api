@@ -225,3 +225,7 @@ Timestamp: Sat Jun 10 2023 11:00:17 GMT-0500 (Central Daylight Time)
 ::1 - - [30/Aug/2023:13:11:15 +0000] "GET /users/ HTTP/1.1" 401 - "-" "PostmanRuntime/7.32.3"
 ::1 - - [30/Aug/2023:13:11:32 +0000] "GET /users/ HTTP/1.1" 401 - "-" "PostmanRuntime/7.32.3"
 ::1 - - [12/Sep/2023:13:54:04 +0000] "POST /users HTTP/1.1" 201 241 "-" "PostmanRuntime/7.32.3"
+127.0.0.1 - - [24/Oct/2023:21:57:06 +0000] "POST /users HTTP/1.1" 201 217 "-" "PostmanRuntime/7.34.0"
+127.0.0.1 - - [24/Oct/2023:22:22:00 +0000] "GET /movies HTTP/1.1" 201 5994 "http://localhost:1234/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36"
+127.0.0.1 - - [24/Oct/2023:22:24:44 +0000] "GET /movies HTTP/1.1" 201 5994 "http://localhost:1234/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36"
+127.0.0.1 - - [24/Oct/2023:22:25:55 +0000] "GET /movies HTTP/1.1" 201 5994 "http://localhost:1234/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36"
